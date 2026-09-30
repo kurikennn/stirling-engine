@@ -1,0 +1,530 @@
+:root {
+  --bg: #15171b;
+  --scene-bg: #2a2f37;
+  --panel: rgba(28, 31, 37, 0.9);
+  --panel-border: rgba(255, 255, 255, 0.08);
+  --fg: #e6e8eb;
+  --muted: #9aa1ab;
+  --accent: #d6a84e;
+  --hot: #ff7a45;
+  --cold: #3d9bff;
+  --warn: #ffb020;
+  --danger: #ff5a52;
+  --chart-fg: #a9b0ba;
+  --chart-grid: rgba(255, 255, 255, 0.08);
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--fg);
+  font: 14px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, "Hiragino Sans", "Noto Sans JP", sans-serif;
+  overflow: hidden;
+}
+
+#viewport {
+  position: fixed;
+  inset: 0;
+  touch-action: none;
+}
+
+#viewport canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+#topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 16px;
+  pointer-events: none;
+}
+
+#topbar > * {
+  pointer-events: auto;
+}
+
+#topbar h1 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 650;
+}
+
+#topbar .sub {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.badges {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.badge {
+  font-size: 12px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.badge.link {
+  color: var(--fg);
+  text-decoration: none;
+}
+
+#loading {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(320px, 80vw);
+  text-align: center;
+  color: var(--muted);
+}
+
+#loading .bar {
+  margin-top: 8px;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+#loading-fill {
+  height: 100%;
+  width: 0;
+  background: var(--accent);
+  transition: width 0.15s;
+}
+
+#alert {
+  position: fixed;
+  top: 64px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: rgba(80, 20, 18, 0.92);
+  border: 1px solid var(--danger);
+  max-width: min(560px, calc(100vw - 32px));
+  z-index: 10;
+}
+
+.panel {
+  position: fixed;
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 10px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  max-height: calc(100dvh - 90px);
+  overflow: auto;
+}
+
+#controls {
+  left: 16px;
+  bottom: 16px;
+  width: 300px;
+}
+
+#analysis {
+  right: 16px;
+  top: 64px;
+  width: 360px;
+}
+
+#part-panel {
+  left: 16px;
+  top: 64px;
+  width: 300px;
+  padding: 14px 16px;
+  max-height: calc(100dvh - 400px);
+  min-height: 120px;
+}
+
+.panel-toggle {
+  display: block;
+  width: 100%;
+  text-align: left;
+  font-weight: 600;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--panel-border);
+  border-radius: 0;
+  padding: 10px 14px;
+  color: var(--fg);
+}
+
+.panel-toggle::after {
+  content: "▾";
+  float: right;
+  color: var(--muted);
+}
+
+.panel-toggle[aria-expanded="false"]::after {
+  content: "▸";
+}
+
+.panel-toggle[aria-expanded="false"] {
+  border-bottom: 0;
+}
+
+.panel-body {
+  padding: 10px 14px 14px;
+}
+
+.panel-body[hidden] {
+  display: none;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 6px 0;
+  flex-wrap: wrap;
+}
+
+.slider {
+  display: block;
+  margin: 8px 0;
+}
+
+.slider span {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.slider output {
+  color: var(--fg);
+  font-variant-numeric: tabular-nums;
+}
+
+input[type="range"] {
+  width: 100%;
+  accent-color: var(--accent);
+}
+
+input[type="checkbox"] {
+  accent-color: var(--accent);
+}
+
+.check {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+button {
+  font: inherit;
+  color: var(--fg);
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid var(--panel-border);
+  border-radius: 6px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+button.primary {
+  background: var(--accent);
+  color: #1a1408;
+  border-color: transparent;
+  font-weight: 600;
+  min-width: 88px;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--panel-border);
+  margin: 10px 0;
+}
+
+.hint {
+  color: var(--muted);
+  font-size: 11px;
+  margin: 8px 0 0;
+}
+
+h3 {
+  font-size: 13px;
+  margin: 12px 0 4px;
+}
+
+h3 small {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.chart {
+  display: block;
+  width: 100%;
+  height: 170px;
+}
+
+.legend {
+  font-size: 12px;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sw {
+  display: inline-block;
+  width: 14px;
+  height: 3px;
+  border-radius: 2px;
+  margin-left: 6px;
+}
+
+.sw.hot {
+  background: var(--hot);
+}
+
+.sw.cold {
+  background: var(--cold);
+}
+
+.readout {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+
+.readout .cell {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 6px;
+  padding: 5px 7px;
+}
+
+.readout .k {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.readout .v {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+details {
+  margin-top: 10px;
+  border-top: 1px solid var(--panel-border);
+  padding-top: 8px;
+}
+
+summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+details p,
+details li {
+  font-size: 12.5px;
+  color: #c9cdd3;
+}
+
+details ul {
+  padding-left: 18px;
+  margin: 6px 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+}
+
+td,
+th {
+  padding: 3px 4px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--panel-border);
+}
+
+th {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+td.num {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.inputs input {
+  width: 76px;
+  font: inherit;
+  color: var(--fg);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--panel-border);
+  border-radius: 4px;
+  padding: 1px 4px;
+}
+
+.tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 1px 5px;
+  border-radius: 4px;
+  vertical-align: middle;
+}
+
+.tag:empty {
+  display: none;
+}
+
+.tag.assumed {
+  background: rgba(255, 176, 32, 0.18);
+  color: var(--warn);
+  border: 1px solid rgba(255, 176, 32, 0.5);
+}
+
+.tag.edited {
+  background: rgba(61, 155, 255, 0.18);
+  color: var(--cold);
+  border: 1px solid rgba(61, 155, 255, 0.5);
+}
+
+.tag.ok {
+  background: rgba(80, 200, 120, 0.15);
+  color: #6fd08c;
+  border: 1px solid rgba(80, 200, 120, 0.4);
+}
+
+.big-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 6px;
+  margin: 6px 0;
+}
+
+.big-compare .cell {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 6px;
+  padding: 6px;
+  text-align: center;
+}
+
+.big-compare .v {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.big-compare .k {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+#part-panel h2 {
+  margin: 0 20px 2px 0;
+  font-size: 16px;
+}
+
+#part-panel .ja {
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+#part-panel a {
+  color: var(--accent);
+}
+
+.close {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  border: 0;
+  background: none;
+  font-size: 20px;
+  line-height: 1;
+  padding: 2px 6px;
+}
+
+.todo {
+  color: var(--warn);
+}
+
+/* Phones and narrow windows: stack the panels at the bottom, collapsed by default in JS. */
+@media (max-width: 760px) {
+  #topbar h1 {
+    font-size: 15px;
+  }
+
+  #topbar .sub {
+    display: none;
+  }
+
+  /* Both panel headers share the bottom row; an open panel takes the full width. */
+  #controls,
+  #analysis {
+    top: auto;
+    bottom: calc(8px + env(safe-area-inset-bottom));
+    width: auto;
+    max-height: 60dvh;
+  }
+
+  #controls {
+    left: 8px;
+    right: calc(50% + 4px);
+  }
+
+  #analysis {
+    left: calc(50% + 4px);
+    right: 8px;
+  }
+
+  body.open-controls #controls,
+  body.open-analysis #analysis {
+    left: 8px;
+    right: 8px;
+  }
+
+  body.open-controls #analysis,
+  body.open-analysis #controls {
+    display: none;
+  }
+
+  #part-panel {
+    left: 8px;
+    right: 8px;
+    top: 56px;
+    width: auto;
+    max-height: 40dvh;
+  }
+
+  .chart {
+    height: 140px;
+  }
+}

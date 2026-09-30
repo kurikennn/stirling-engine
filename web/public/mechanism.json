@@ -1,0 +1,286 @@
+{
+  "units": "mm",
+  "source": "Measured by tools/convert/convert.py from the pin-shaft axes in cad/step/00_assembly.STEP. Plane coordinates are CAD (x, y); the pins are parallel to CAD z.",
+  "plane": {
+    "origin": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "u": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "v": [
+      0.0,
+      1.0,
+      0.0
+    ]
+  },
+  "joints": {
+    "O": [
+      70.0,
+      -67.5
+    ],
+    "C": [
+      65.4441,
+      -62.1855
+    ],
+    "B": [
+      70.0182,
+      -111.9759
+    ],
+    "G": [
+      130.0,
+      -110.5
+    ],
+    "E_hot": [
+      30.1859,
+      -115.6352
+    ],
+    "E_cold": [
+      109.8504,
+      -108.3166
+    ],
+    "P_hot": [
+      30.0,
+      -55.6355
+    ],
+    "P_cold": [
+      110.0,
+      -48.3168
+    ]
+  },
+  "lengths": {
+    "crank_radius": 7.0,
+    "yoke_C_B": 50.0,
+    "yoke_B_E_hot": 40.0,
+    "yoke_B_E_cold": 40.0,
+    "guide_rod": 60.0,
+    "rod_hot": 60.0,
+    "rod_cold": 60.0
+  },
+  "cylinders": {
+    "hot": {
+      "point": [
+        30.0,
+        0.0
+      ],
+      "dir": [
+        0.0,
+        1.0
+      ],
+      "z": -30.0
+    },
+    "cold": {
+      "point": [
+        110.0,
+        0.0
+      ],
+      "dir": [
+        0.0,
+        1.0
+      ],
+      "z": -30.0
+    }
+  },
+  "piston_diameter_mm": {
+    "hot": 18.89,
+    "cold": 20.0
+  },
+  "rotation": 1,
+  "measured": {
+    "power_mW": 128.3,
+    "speed_rpm": 340,
+    "method": "flywheel coupled by a pulley to a measurement device"
+  },
+  "links": {
+    "01_base": "ground",
+    "02_side_plate": "ground",
+    "03_flywheel": "crank",
+    "04_crank_arm": "crank",
+    "05_heating_cap_jacket": "ground",
+    "06_hot_cylinder_jacket": "ground",
+    "07_heating_cap": "ground",
+    "08_hot_piston_adapter": "piston_hot",
+    "09_cold_cylinder": "ground",
+    "10_cold_piston": "piston_cold",
+    "11_center_shaft_base_connector": "ground",
+    "12_t_crank_guide_rod_base_connector": "ground",
+    "13_t_crank": "yoke",
+    "14_t_crank_guide_rod": "guide_rod",
+    "15_piston_drive_rod__1": "rod_hot",
+    "15_piston_drive_rod__2": "rod_cold",
+    "16_short_shaft__1": "piston_hot",
+    "16_short_shaft__2": "rod_hot",
+    "16_short_shaft__3": "yoke",
+    "16_short_shaft__4": "rod_cold",
+    "16_short_shaft__5": "piston_cold",
+    "17_long_shaft__1": "guide_rod",
+    "17_long_shaft__2": "guide_rod",
+    "18_center_shaft": "crank",
+    "19_spacer__1": "yoke",
+    "19_spacer__2": "crank",
+    "19_spacer__3": "yoke",
+    "20_center_spacer__1": "crank",
+    "20_center_spacer__2": "crank",
+    "21_spacer_t_crank_side__1": "yoke",
+    "21_spacer_t_crank_side__2": "ground",
+    "22_hot_seal__1": "ground",
+    "22_hot_seal__2": "ground",
+    "23_cold_seal": "ground",
+    "24_water_cooling_plate_mechanism_side": "ground",
+    "25_water_cooling_plate_wheel_side": "ground",
+    "26_water_cooling_plate_side_plate_side": "ground",
+    "27_hot_cylinder": "ground",
+    "28_hot_piston": "piston_hot",
+    "29_bearing_mf84zz__1": "rod_hot",
+    "29_bearing_mf84zz__10": "rod_cold",
+    "29_bearing_mf84zz__11": "rod_cold",
+    "29_bearing_mf84zz__12": "piston_cold",
+    "29_bearing_mf84zz__13": "guide_rod",
+    "29_bearing_mf84zz__14": "guide_rod",
+    "29_bearing_mf84zz__2": "piston_hot",
+    "29_bearing_mf84zz__3": "rod_hot",
+    "29_bearing_mf84zz__4": "rod_hot",
+    "29_bearing_mf84zz__5": "yoke",
+    "29_bearing_mf84zz__6": "yoke",
+    "29_bearing_mf84zz__7": "guide_rod",
+    "29_bearing_mf84zz__8": "guide_rod",
+    "29_bearing_mf84zz__9": "rod_cold",
+    "30_bearing_mf106zz__1": "crank",
+    "30_bearing_mf106zz__2": "crank",
+    "31_shim_ring__1": "rod_hot",
+    "31_shim_ring__10": "piston_cold",
+    "31_shim_ring__11": "guide_rod",
+    "31_shim_ring__2": "piston_hot",
+    "31_shim_ring__3": "piston_hot",
+    "31_shim_ring__4": "rod_hot",
+    "31_shim_ring__5": "yoke",
+    "31_shim_ring__6": "guide_rod",
+    "31_shim_ring__7": "rod_cold",
+    "31_shim_ring__8": "rod_cold",
+    "31_shim_ring__9": "piston_cold",
+    "32_stopper__1": "rod_hot",
+    "32_stopper__2": "rod_hot",
+    "32_stopper__3": "yoke",
+    "32_stopper__4": "guide_rod",
+    "32_stopper__5": "rod_cold",
+    "32_stopper__6": "rod_cold",
+    "32_stopper__7": "guide_rod",
+    "33_bolt_m6x25": "ground",
+    "34_bolt_m6x20": "ground",
+    "35_bolt_m5x25__1": "ground",
+    "35_bolt_m5x25__2": "ground",
+    "35_bolt_m5x25__3": "ground",
+    "35_bolt_m5x25__4": "ground",
+    "36_bolt_m5x20__1": "ground",
+    "36_bolt_m5x20__2": "ground",
+    "36_bolt_m5x20__3": "ground",
+    "36_bolt_m5x20__4": "ground",
+    "37_bolt_m5x16__1": "ground",
+    "37_bolt_m5x16__2": "ground",
+    "38_bolt_m3x25__1": "ground",
+    "38_bolt_m3x25__2": "ground",
+    "38_bolt_m3x25__3": "ground",
+    "38_bolt_m3x25__4": "ground",
+    "39_bolt_m3x20__1": "ground",
+    "39_bolt_m3x20__2": "ground",
+    "39_bolt_m3x20__3": "ground",
+    "39_bolt_m3x20__4": "ground",
+    "40_bolt_m3x16__1": "ground",
+    "40_bolt_m3x16__2": "ground",
+    "40_bolt_m3x16__3": "ground",
+    "40_bolt_m3x16__4": "ground",
+    "41_bolt_m3x10__1": "ground",
+    "41_bolt_m3x10__2": "ground",
+    "41_bolt_m3x10__3": "ground",
+    "41_bolt_m3x10__4": "ground",
+    "42_set_screw_m4x8": "crank",
+    "43_set_screw_m3x12": "crank",
+    "44_set_screw_m3x6": "crank",
+    "45_set_screw_m3x5__1": "piston_hot",
+    "45_set_screw_m3x5__2": "yoke",
+    "45_set_screw_m3x5__3": "yoke",
+    "45_set_screw_m3x5__4": "piston_cold",
+    "45_set_screw_m3x5__5": "yoke",
+    "45_set_screw_m3x5__6": "ground"
+  },
+  "design": {
+    "note": "Design values from the drawings, used by web/test/kinematics.test.ts. null = not entered yet (the test is skipped). crosscheck: piston pin travel s (mm, + towards the working space) recorded in SolidWorks after turning the flywheel by phi_deg in the running direction.",
+    "stroke_hot_mm": null,
+    "stroke_cold_mm": null,
+    "phase_lag_deg": null,
+    "crosscheck": []
+  },
+  "thermo": {
+    "gas": "air",
+    "charge_condition": "Sealed at atmospheric pressure at the minimum-volume crank position (ASSUMED).",
+    "inputs": {
+      "bore_hot": {
+        "value": 18.89,
+        "unit": "mm",
+        "status": "ASSUMED",
+        "label": "Hot bore",
+        "source": "outer diameter of 28_hot_piston in the CAD model"
+      },
+      "bore_cold": {
+        "value": 20.0,
+        "unit": "mm",
+        "status": "ASSUMED",
+        "label": "Cold bore",
+        "source": "outer diameter of 10_cold_piston in the CAD model"
+      },
+      "dead_volume_hot": {
+        "value": 1.5,
+        "unit": "cm³",
+        "status": "ASSUMED",
+        "label": "Dead volume, expansion space",
+        "source": "placeholder estimate"
+      },
+      "dead_volume_cold": {
+        "value": 1.0,
+        "unit": "cm³",
+        "status": "ASSUMED",
+        "label": "Dead volume, compression space",
+        "source": "placeholder estimate"
+      },
+      "dead_volume_passage": {
+        "value": 2.0,
+        "unit": "cm³",
+        "status": "ASSUMED",
+        "label": "Dead volume, connecting passage",
+        "source": "placeholder estimate"
+      },
+      "T_hot": {
+        "value": 350,
+        "unit": "°C",
+        "status": "ASSUMED",
+        "label": "Hot gas temperature T_h",
+        "source": "placeholder; replace with the hot-side temperature measured in the test"
+      },
+      "T_cold": {
+        "value": 20,
+        "unit": "°C",
+        "status": "ASSUMED",
+        "label": "Cold gas temperature T_k",
+        "source": "water-cooled plates, about room temperature"
+      },
+      "p_charge": {
+        "value": 101325,
+        "unit": "Pa",
+        "status": "ASSUMED",
+        "label": "Charge pressure",
+        "source": "atmospheric"
+      },
+      "R_gas": {
+        "value": 287,
+        "unit": "J/(kg·K)",
+        "status": "ASSUMED",
+        "label": "Gas constant (air)",
+        "source": "air"
+      }
+    }
+  }
+}

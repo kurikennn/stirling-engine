@@ -1,0 +1,16 @@
+* text=auto eol=lf
+
+# CAD, drawings and models are binary (STEP is text but not meaningfully diffable)
+*.SLDPRT binary
+*.SLDASM binary
+*.sldprt binary
+*.sldasm binary
+*.SLDDRW binary
+*.STEP -text -diff
+*.step -text -diff
+*.pdf binary
+*.glb binary
+*.jpg binary
+*.png binary
+*.gif binary
+web/package-lock.json -diff

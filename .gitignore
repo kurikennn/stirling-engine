@@ -1,0 +1,28 @@
+# Claude Code / spec files kept out of the repository
+CLAUDE.md
+**/CLAUDE.md
+REQUIREMENTS.md
+**/REQUIREMENTS.md
+.claude/
+
+# Node / Vite
+node_modules/
+web/dist/
+*.local
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# SolidWorks temporary and lock files
+~$*
+*.SLDBAK
+*.swbak
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
